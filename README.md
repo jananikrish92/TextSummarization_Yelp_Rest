@@ -4,10 +4,10 @@ Step1: Download the Yelp dataset as a json file <br>
 Step2: Able to read the json file using python  <br>
 Step4: Performing sentiment analysis on the dataset using vader <br>
 For every review and tip, calculate the polarity score using vader. The comound score returned by the nltk library is between [-1, 1]. Divide this range into 5 intervals <br>
-- [-1, 0.6) - score 0
-- [0.6, -0.2)
-- [-0.2, 0.2)
-- [0.2, 0.6)
-- [0.6, 1]
+- [-1, 0.6) - score 1
+- [0.6, -0.2) - score 2
+- [-0.2, 0.2) - score 3
+- [0.2, 0.6) - score 4
+- [0.6, 1] - score 5
 
 Step5:
