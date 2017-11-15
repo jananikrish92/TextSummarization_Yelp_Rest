@@ -36,7 +36,20 @@ def sentiment_review():
 		update_std = 'update review set predicted_score ='+str(score)+' where review_id=\''+str(row[0][0])+'\';'
 		dbmgr.query(update_std)
 
+def sentiment_tip():
+	global sid
+	global dbmgr
+	select_stmt = 'select id,text from tip;'
+	rows = (dbmgr.query(select_stmt)).fetchall()
+	dbmgr.closedDb()
+	dbmgr = DBSetup.DatabaseManager("nlp.db")
+	for row in rows:
+		score = score_eval(sid.polarity_scores(row[1])['compound'])
+		update_std = 'update tip set predicted_score ='+str(score)+' where id='+str(row[0])+';'
+		dbmgr.query(update_std)
 
 # alter_table('review')
-sentiment_review()
+# sentiment_review()
+alter_table('tip')
+sentiment_tip()
 dbmgr.closedDb()
