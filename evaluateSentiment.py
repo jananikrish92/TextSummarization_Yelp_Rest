@@ -14,7 +14,7 @@ def getPredictedStars():
 		print "predicted_score", row[0][1]
 		break
 		predictedStars[row[0][0]] += row[0][1]
-		n++;
+		n += 1
 	for i in predictedStars.keys():
 		predictedStars[i] /= n #average
 	return predictedStars
