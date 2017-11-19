@@ -20,6 +20,10 @@ class DatabaseManager(object):
     def insertQuery3(self,arg, arg1,arg2,arg3):
         self.cur.execute(arg,(arg1,arg2,arg3))
         return self.cur
+
+    def updateQuery(self, arg, arg1):
+        self.cur.executemany(arg, arg1)
+        return self.cur
     
     def closedDb(self):
         self.conn.commit()
