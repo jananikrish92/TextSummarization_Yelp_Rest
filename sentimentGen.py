@@ -48,7 +48,7 @@ def sentiment_review():
 def sentiment_review_updated():
 	global sid
 	global dbmgr
-	select_stmt = 'select review_id,text, business_id from review;'
+	select_stmt = 'select review_id,text, business_id from review limit 10;'
 	rows = (dbmgr.query(select_stmt)).fetchall()
 	dbmgr.closedDb()
 	dbmgr = DBSetup.DatabaseManager("nlp.db")
@@ -58,7 +58,10 @@ def sentiment_review_updated():
 	for row in rows:	
 		business_list[row[0]] = row[2]
 		score = score_eval(sid.polarity_scores(row[1])['compound'])
+		print score
 		score_list[row[0]] = score
+		print score_list[row[0]]
+		break
 		print count
 		count +=1
 	pickle.dump(score_list, open( "sentimentScores.p", "wb" ))
