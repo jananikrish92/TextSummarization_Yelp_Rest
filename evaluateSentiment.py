@@ -37,8 +37,7 @@ def evaluation(predictedStars, actualStars):
 	# print len(predictedStars)
 	miss = 0
 	for key in predictedStars:
-		#print abs(predictedStars[key] - actualStars[key]) / (abs(predictedStars[key]) + abs(actualStars[key]))
-		if (abs(predictedStars[key] - actualStars[key]) / (abs(predictedStars[key]) + abs(actualStars[key])))>=0.4:
+		if (abs(predictedStars[key] - actualStars[key]))>=1.5:
 			miss +=1
 	return miss/float(len(predictedStars))
 
@@ -46,5 +45,5 @@ predicted = getPredictedStars()
 # print predicted
 actual = getActualStars()
 # print actual
-rel_error = evaluation(predicted, actual)
-print "relative error is" , rel_error
+error_rate = evaluation(predicted, actual)
+print "accuracy is" , (1-error_rate)*100, "%"
