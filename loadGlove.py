@@ -9,7 +9,4 @@ def loadGloveModel(gloveFile):
         word = splitLine[0]
         embedding = np.array([float(val) for val in splitLine[1:]])
         model[word] = embedding
-    pickle.dump(model, open( "word-to-vec.p", "wb" ))
-
-path = "/glove.840B.300d.txt" # give path to the downloaded glove file
-loadGloveModel(path)
+    return model
